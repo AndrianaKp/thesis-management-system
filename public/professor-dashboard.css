@@ -1,0 +1,108 @@
+/* =========================================================
+   PROFESSOR OVERRIDES (πάνω στο shared)
+   ========================================================= */
+
+/* Ίδιο χρώμα κουμπιών με φοιτητή/γραμματεία -> χρησιμοποιούμε τα shared .primary-btn/.secondary-btn */
+.page-professor .dash-actions > *{ background:#0f172a; }
+.page-professor .dash-actions > *:hover{ background:#0b1222; }
+
+/* Φίλτρα λίστας διπλωματικών */
+#filters-section{
+  padding: 0;
+  border:none;
+  background:transparent;
+}
+#filters-section .filters{
+  margin:0 auto 10px;
+  width:min(600px, 94vw);
+}
+
+/* Λίστα διπλωματικών — basic spacing */
+#theses-list{ display:flex; flex-direction:column; gap:14px; }
+#theses-list .thesis-item{
+  background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px;
+  box-shadow: var(--shadow-sm);
+}
+#theses-list .thesis-item .thesis-row{
+  display:flex; align-items:flex-start; justify-content:space-between; gap:14px;
+}
+#theses-list .thesis-item .meta .badges{ display:flex; gap:8px; flex-wrap:wrap; }
+
+/* Buttons μέσα στη λίστα  */
+#theses-list .btn.btn-sm,
+#theses-list .primary-btn.btn-sm,
+#theses-list .secondary-btn.btn-sm{
+  padding:.45rem .7rem; border-radius:10px; font-size:.92rem;
+}
+
+/* Σχόλια/Σημειώσεις */
+.notes-section textarea{
+  width:100%; max-width:720px;
+  border-radius:10px; border:1px solid var(--line); padding:8px;
+}
+
+/* Announcement  */
+.announcement-item{
+  background:#f9fbff; border:1px solid #e7ecf6; border-radius:12px; padding:10px;
+}
+.announcement-text{ white-space:pre-wrap; }
+
+/*  Αποτροπή οριζόντιας μπάρας από μεγάλα iframes */
+iframe{ max-width:100%; }
+
+/* =======================
+   Professor – ΟΛΑ τα κουμπιά ίδια
+   ======================= */
+
+/* 1) Ενοποίηση primary/secondary/btn/outline μέσα στον professor */
+.page-professor .primary-btn,
+.page-professor .secondary-btn,
+.page-professor .btn,
+.page-professor .btn.btn-outline,
+.page-professor .btn.btn-sm,
+.page-professor .btn-primary {
+  background: var(--brand);     /* ίδιο brand χρώμα με τα άλλα dashboards */
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+/* 2) Hover/active */
+.page-professor .primary-btn:hover,
+.page-professor .secondary-btn:hover,
+.page-professor .btn:hover,
+.page-professor .btn.btn-outline:hover,
+.page-professor .btn.btn-primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* 3) Ειδικά στη λίστα διπλωματικών να μην “ξεφεύγει” τίποτα */
+.page-professor #theses-list .primary-btn,
+.page-professor #theses-list .secondary-btn,
+.page-professor #theses-list .btn,
+.page-professor #theses-list .btn.btn-outline {
+  background: var(--brand);
+  color:#fff;
+  border-color: transparent;
+}
+
+/* 4) Αν κάπου εμφανίζεται "danger" (π.χ. ακύρωση) και ΔΕΝ θέλεις κόκκινο,
+      κάνʼ το κι αυτό ίδιο (αλλιώς αφαίρεσε αυτό το block). */
+.page-professor .btn-danger {
+  background: var(--brand);
+  color:#fff;
+  border-color: transparent;
+}
+
+/* 5) Τα κουμπιά στη μπάρα ενεργειών να είναι επίσης ίδια */
+.page-professor .dash-actions > * {
+  background: var(--brand);
+  color: #fff;
+  border: 1px solid transparent;
+}
+.page-professor .dash-actions > *:hover {
+  background: var(--brand);
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}

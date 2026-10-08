@@ -1,0 +1,207 @@
+<main class="container">
+  <!-- ===== Κοινό header για τα dashboards ===== -->
+  <header class="dash-header">
+    <div>
+      <h1 class="dash-title">Πίνακας Φοιτητή</h1>
+      <p class="dash-subtitle">Διαχείριση θέματος, προφίλ & εξέτασης</p>
+    </div>
+  </header>
+
+  <!-- ===== Grid περιεχομένου (στήνεται στο dashboard-shared.css) ===== -->
+  <div class="dash-grid">
+
+    <!-- ========== Προβολή διπλωματικής ========== -->
+    <section id="thesis-section" class="card">
+      <h2>Προβολή θέματος</h2>
+      <button id="view-thesis-button" class="primary-btn">Προβολή Θέματος</button>
+      <!-- Γεμίζει δυναμικά από student-dashboard.js -->
+      <div id="thesis-details" style="display:none;"></div>
+    </section>
+
+    <!-- ========== Επεξεργασία προφίλ ========== -->
+    <section id="profile-section" class="card">
+      <h2>Επεξεργασία Προφίλ</h2>
+      <button id="edit-profile-button" class="primary-btn">Επεξεργασία Προφίλ</button>
+
+      <!-- Κρύβεται αρχικά (το JS κάνει toggle με style.display) -->
+      <div id="profile-form" style="display:none;">
+        <form id="update-profile-form">
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Εισάγετε το email σας">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Τηλέφωνο:</label>
+            <input type="text" id="phone" name="phone" placeholder="Εισάγετε το κινητό">
+          </div>
+
+          <div class="form-group">
+            <label for="landline_phone">Σταθερό:</label>
+            <input type="text" id="landline_phone" name="landline_phone" placeholder="Σταθερό τηλέφωνο">
+          </div>
+
+          <div class="form-group">
+            <label for="address">Διεύθυνση:</label>
+            <textarea id="address" name="address" rows="3" placeholder="Εισάγετε τη διεύθυνσή σας"></textarea>
+          </div>
+
+          <button type="submit" class="primary-btn">Αποθήκευση</button>
+        </form>
+
+        <div id="profile-message" class="message"></div>
+      </div>
+    </section>
+
+    <!-- ========== Επιτροπή (επιλογή διδασκόντων) ========== -->
+    <section id="committee-section" class="card" style="display:none;">
+      <h2>Επιλογή Διδασκόντων για την Επιτροπή</h2>
+
+      <!-- Το assignmentId γεμίζει/ενημερώνεται και από το JS -->
+      <input type="hidden" id="assignment-id" value="{{assignmentId}}">
+
+      <form id="committee-form">
+        <div class="form-group">
+          <label for="professors">Επιλέξτε Διδάσκοντες:</label>
+          <select id="professors" name="professors" multiple size="4"></select>
+        </div>
+        <button type="submit" class="primary-btn">Αποστολή Προσκλήσεων</button>
+      </form>
+    </section>
+
+    <!-- ========== Υποβολή πρόχειρου ========== -->
+    <section id="draft-submission-section" class="card" style="display:none;">
+      <h2>Υποβολή Πρόχειρου Κειμένου</h2>
+
+      <form id="draft-submission-form" enctype="multipart/form-data">
+        <input type="hidden" name="assignmentId" value="{{assignmentId}}">
+
+        <div class="form-group">
+          <label for="pdf_draft">Αρχείο Πρόχειρου (PDF):</label>
+          <input type="file" id="pdf_draft" name="pdf_draft" accept="application/pdf" required>
+        </div>
+
+        <div class="form-group">
+          <label for="supporting_materials">Υποστηρικτικό Υλικό:</label>
+          <textarea id="supporting_materials" name="supporting_materials" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="primary-btn">Υποβολή Πρόχειρου</button>
+
+        <!-- Προβάλλεται μόνο όταν υπάρχει υποβολή (JS θέτει display:inline-block) -->
+        <button
+          type="button"
+          id="view-submission-btn"
+          class="primary-btn"
+          style="margin-left:10px; display:none;"
+        >
+          Προβολή Υποβολής
+        </button>
+      </form>
+
+      <div id="draft-message" class="message"></div>
+    </section>
+
+    <!-- ========== Εξέταση ========== -->
+    <section id="exam-section" class="card">
+      <h2>Εξέταση Διπλωματικής</h2>
+
+      <button id="toggle-exam-form-button" class="primary-btn">Καταχώρηση Εξέτασης</button>
+
+      <!-- Κρύβεται αρχικά (JS toggle) -->
+      <div id="exam-form-container" style="display:none;">
+        <form id="exam-form">
+          <div class="form-group">
+            <label for="exam-date">Ημερομηνία και Ώρα:</label>
+            <input type="datetime-local" id="exam-date" name="exam-date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="exam-type">Τρόπος Εξέτασης:</label>
+            <select id="exam-type" name="exam-type" required>
+              <option value="dia zosis">Δια ζώσης</option>
+              <option value="online">Διαδικτυακά</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="exam-location">Αίθουσα / Σύνδεσμος:</label>
+            <input type="text" id="exam-location" name="exam-location" required>
+          </div>
+
+          <button type="submit" class="primary-btn">Αποθήκευση</button>
+        </form>
+
+        <div id="exam-message" class="message"></div>
+      </div>
+
+      <!-- Εμφανίζεται από JS όταν υπάρχει καταχωρημένη εξέταση -->
+      <button
+        type="button"
+        id="view-exam-details-button"
+        class="primary-btn"
+        style="margin-top:10px; display:none;"
+      >
+        Προβολή Ημερομηνίας & Τρόπου Εξέτασης
+      </button>
+
+      <!-- Πλαίσιο λεπτομερειών εξέτασης (γεμίζει από JS) -->
+      <div id="exam-details-container" class="card" style="display:none; padding:15px;">
+        <h3>Στοιχεία Εξέτασης</h3>
+        <p><strong>Ημερομηνία:</strong> <span id="exam-date-display"></span></p>
+        <p><strong>Τρόπος Εξέτασης:</strong> <span id="exam-type-display"></span></p>
+        <p><strong>Τοποθεσία / Σύνδεσμος:</strong> <span id="exam-location-display"></span></p>
+      </div>
+    </section>
+
+    <!-- ========== Πρακτικό (εμφανίζεται όταν υπάρχουν οι 3 βαθμοί / Completed) ========== -->
+    <section id="praktiko-section" class="card" style="display:none;">
+      <h2>Πρακτικό Εξέτασης</h2>
+      <button id="view-praktiko-button" class="primary-btn">Προβολή Πρακτικού Εξέτασης</button>
+    </section>
+
+    <!-- ========== Repository (Νημερτής) ========== -->
+    <section id="repository-section" class="card">
+      <h2>Καταχώρηση Συνδέσμου Νημερτή</h2>
+
+      <button
+        id="toggle-repository-form-button"
+        class="primary-btn"
+        style="margin-bottom:10px;"
+      >
+        ➕ Καταχώρηση Συνδέσμου Νημερτή
+      </button>
+
+      <!-- Κρύβεται αρχικά (JS toggle) -->
+      <form id="save-repository-form" style="display:none; margin-top:10px;">
+        <input type="url" id="repository-link" placeholder="Εισάγετε το σύνδεσμο" required>
+        <button type="submit" class="primary-btn">Αποθήκευση</button>
+      </form>
+
+      <div id="repository-message" class="message" style="margin-top:10px;"></div>
+    </section>
+
+  </div>
+
+  <!-- ========== Modal υποβολής πρόχειρου (overlay) ========== -->
+  <div id="submission-modal" class="modal" aria-hidden="true" style="display:none;">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="submission-modal-title">
+      <div class="modal-header">
+        <h3 id="submission-modal-title">Πρόχειρο Κείμενο</h3>
+        <button class="close" aria-label="Κλείσιμο">×</button>
+      </div>
+
+      <!-- Γεμίζει δυναμικά με iframe από το JS -->
+      <div id="submission-modal-body" class="modal-body"></div>
+
+      <div class="modal-actions">
+        <a id="submission-newtab" class="secondary-btn" target="_blank" rel="noopener noreferrer" hidden>
+          Άνοιγμα σε νέα καρτέλα
+        </a>
+        <button class="primary-btn close">Κλείσιμο</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/student-dashboard.js"></script>
+</main>

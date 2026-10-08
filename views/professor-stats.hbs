@@ -1,0 +1,26 @@
+<section class="stats-page">
+  <div class="stats-wrap">
+    <h1 class="stats-title">Στατιστικά Διπλωματικών</h1>
+    <p class="stats-sub">Σύνοψη επιδόσεων ως Επιβλέπων και ως Μέλος.</p>
+
+    <div class="stats-grid">
+      <article class="chart-card">
+        <h3 class="chart-title">Μ.Ο. Διάρκειας (ημέρες)</h3>
+        <canvas id="completionTimeChart" aria-label="Average completion time"></canvas>
+      </article>
+
+      <article class="chart-card">
+        <h3 class="chart-title">Μ.Ο. Τελικού Βαθμού</h3>
+        <canvas id="avgGradeChart" aria-label="Average final grade"></canvas>
+      </article>
+
+      <article class="chart-card">
+        <h3 class="chart-title">Σύνολο Διπλωματικών</h3>
+        <canvas id="totalCountChart" aria-label="Total theses count"></canvas>
+      </article>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/professor-stats.js"></script>

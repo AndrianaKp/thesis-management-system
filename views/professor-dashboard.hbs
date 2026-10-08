@@ -1,0 +1,106 @@
+<section class="container">
+
+  
+ <!-- Κεφαλίδα -->
+<header class="dash-hero">
+  <h1>Πίνακας Καθηγητή</h1>
+  <small>Διαχείριση θεμάτων, φοιτητών, φίλτρων, προσκλήσεων & στατιστικών</small>
+</header>
+
+
+
+  <!-- Προβολή Θεμάτων -->
+  <section class="card">
+    <h2>Προβολή Θεμάτων</h2>
+    <button id="view-topics-btn" class="primary-btn">Προβολή Θεμάτων</button>
+
+    <!-- Περιεχόμενο (κρυφό μέχρι να πατηθεί) -->
+    <div id="view-topics-section" style="display:none;margin-top:12px;">
+      <ul id="topics-list"></ul>
+    </div>
+  </section>
+
+  <!-- Δημιουργία Νέου Θέματος -->
+  <section class="card">
+    <h2>Δημιουργία Νέου Θέματος</h2>
+    <button id="create-topic-btn" class="primary-btn">Δημιουργία Νέου Θέματος</button>
+
+    <div id="create-topic-section" style="display:none;margin-top:12px;">
+      <form id="create-topic-form" enctype="multipart/form-data" method="POST">
+        <input type="hidden" id="professor-id" name="professor_id" value="{{professorId}}">
+        <input type="text" id="title" name="title" placeholder="Τίτλος" required>
+        <textarea id="description" name="description" placeholder="Σύνοψη" required></textarea>
+        <input type="file" id="file" name="file" accept=".pdf" required>
+        <button type="submit" class="primary-btn">Δημιουργία</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Αναζήτηση Φοιτητή -->
+  <section class="card">
+    <h2>Αναζήτηση Φοιτητή για Ανάθεση</h2>
+    <button id="search-student-btn" class="primary-btn">Αναζήτηση Φοιτητή</button>
+
+    <div id="search-student-section" style="display:none;margin-top:12px;">
+      <form id="search-student-form" class="filters">
+        <input type="text" id="student-search" placeholder="Αναζήτηση με ΑΜ ή Ονοματεπώνυμο" required />
+        <button class="primary-btn" type="submit">Αναζήτηση</button>
+      </form>
+      <div id="student-results"></div>
+    </div>
+  </section>
+
+  <!-- Λίστα Διπλωματικών -->
+  <section class="card">
+    <h2>Λίστα Διπλωματικών & Φίλτρα</h2>
+    <button id="filter-theses-btn" class="primary-btn">Λίστα Διπλωματικών</button>
+
+    <div id="theses-section" style="display:none;margin-top:12px;">
+      <div id="filters-section" class="filters">
+        <label for="status-filter">Κατάσταση</label>
+        <select id="status-filter">
+          <option value="">Όλες</option>
+          <option value="Pending">Υπό Ανάθεση</option>
+          <option value="Active">Ενεργή</option>
+          <option value="UnderReview">Υπό Εξέταση</option>
+          <option value="Completed">Περατωμένη</option>
+          <option value="Canceled">Ακυρωμένη</option>
+        </select>
+
+        <label for="role-filter">Ρόλος</label>
+        <select id="role-filter">
+          <option value="">Όλοι</option>
+          <option value="Supervisor">Επιβλέπων</option>
+          <option value="Member">Μέλος Τριμελούς</option>
+        </select>
+
+        <button id="apply-filters-btn" class="primary-btn" type="button">Εφαρμογή Φίλτρων</button>
+      </div>
+
+      <div id="theses-list"></div>
+      <button id="export-theses-btn" class="secondary-btn" style="display:none;">Εξαγωγή Λίστας</button>
+    </div>
+  </section>
+
+  <!-- Προσκλήσεις -->
+  <section class="card">
+    <h2>Προσκλήσεις</h2>
+    <button id="invitations-btn" class="primary-btn">Προσκλήσεις</button>
+
+    <div id="invitations-container" style="display:none;margin-top:12px;">
+      <div id="invitations-list"></div>
+    </div>
+  </section>
+
+  <!-- Στατιστικά -->
+  <section class="card">
+    <h2>Στατιστικά</h2>
+    <a href="/professor-stats" class="primary-btn">Στατιστικά</a>
+
+
+   
+  </section>
+
+</section>
+
+<script src="/professor-dashboard.js"></script>

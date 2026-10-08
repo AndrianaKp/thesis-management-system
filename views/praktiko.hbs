@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Πρακτικό Εξέτασης Διπλωματικής Εργασίας</title>
+  <link rel="stylesheet" href="/praktiko.css">
+
+</head>
+<body>
+
+  <!-- Κουμπί Εκτύπωσης -->
+  <div class="no-print">
+    <button onclick="window.print()">🖨 Εκτύπωση</button>
+  </div>
+
+  <!-- Περιεχόμενο -->
+  <h1>ΠΑΡΑΡΤΗΜΑ (Υπόδειγμα πρακτικού εξέτασης Δ.Ε.)</h1>
+
+  <h2>ΠΡΟΓΡΑΜΜΑ ΣΠΟΥΔΩΝ<br>«ΤΜΗΜΑ ΜΗΧΑΝΙΚΩΝ Η/Υ ΚΑΙ ΠΛΗΡΟΦΟΡΙΚΗΣ»</h2>
+
+  <h3>ΠΡΑΚΤΙΚΟ ΣΥΝΕΔΡΙΑΣΗΣ ΤΗΣ ΤΡΙΜΕΛΟΥΣ ΕΠΙΤΡΟΠΗΣ<br>ΓΙΑ ΤΗΝ ΠΑΡΟΥΣΙΑΣΗ ΚΑΙ ΚΡΙΣΗ ΤΗΣ ΔΙΠΛΩΜΑΤΙΚΗΣ ΕΡΓΑΣΙΑΣ</h3>
+
+  <div class="section">
+    Του/της φοιτητή/φοιτήτριας <strong>{{student_name}}</strong> (Α.Μ.: <strong>{{student_number}}</strong>).
+  </div>
+
+  <div class="section">
+    Η συνεδρίαση πραγματοποιήθηκε στην αίθουσα <span class="underline">{{exam_location}}</span> στις <span class="underline">{{exam_date}}</span> και ώρα <span class="underline">{{exam_time}}</span>.
+  </div>
+
+  <div class="section">
+    Στην συνεδρίαση έλαβαν μέρος τα μέλη της Τριμελούς Επιτροπής, κ.κ.:
+    <br>1. {{supervisor_name}}
+    <br>2. {{member1_name}}
+    <br>3. {{member2_name}}
+  </div>
+
+<div class="section">
+  η οποία ορίστηκε από την Συνέλευση του ΤΜΗΥΠ, στην συνεδρίαση της με αριθμό
+  <span class="underline">
+    {{#if ap_praktiko}}{{ap_praktiko}}{{else}}……………..{{/if}}
+  </span>.
+</div>
+
+
+
+  <div class="section">
+    Ο/Η φοιτητής/φοιτήτρια παρουσίασε την Διπλωματική του/της Εργασία με τίτλο: <br>
+    <span class="underline">{{thesis_title}}</span>
+  </div>
+
+  <div class="section">
+    Στην συνέχεια υποβλήθηκαν ερωτήσεις στον υποψήφιο από τα μέλη της Τριμελούς Επιτροπής και τους άλλλους παρευρισκόμενους, προκειμένου να διαμορφώσουν σαφή άποψη για το περιεχόμενο της εργασίας, για την επιστημονική συγκρότηση του μεταπτυχιακού φοιτητή.   
+  </div>
+
+  <div class="section">
+    Μετά το τέλος της ανάπτυξης της εργασίας και των ερωτήσεων, ο υποψήφιος αποχωρεί. 
+  </div>
+
+  <div class="section">
+    Ο Επιβλέπων καθηγητής, κ. <strong>{{supervisor_name}}</strong>, προτείνει στα μέλη της Τριμελούς Επιτροπής, να ψηφίσουν για το αν εγκρίνεται η διπλωματική εργασία του/της <strong>{{student_name}}</strong> .
+  </div>
+
+  <div class="section">
+    Τα μέλη της Τριμελούς Επιτροπής, ψηφίζουν κατ' αλφαβητική σειρά:
+    <ol>
+      <li>{{supervisor_name}}</li>
+      <li>{{member1_name}}</li>
+      <li>{{member2_name}}</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    υπέρ της εγκρίσεως της Διπλωματικής Εργασίας του/της φοιτητή/φοιτήτριας <strong>{{student_name}}</strong>, επειδή θεωρούν επιστημονικά επαρκή και το περιεχόμενο της ανταποκρίνεται στο θέμα που του δόθηκε. 
+  </div>
+
+  <div class="section">
+    Μετά την έγκριση, ο εισηγητής καθηγητής κ. <strong>{{supervisor_name}}</strong>, προτείνει στα μέλη της Τριμελούς Επιτροπής, να απονεμηθεί στο/στη φοιτητή/φοιτήτρια κ. <strong>{{student_name}}</strong>, ο βαθμός <strong>{{grade}}</strong>.
+  </div>
+
+ <div class="section">
+  Τα μέλη της Τριμελούς Επιτροπής, απομένουν την παρακάτω βαθμολογία:
+  </div>
+  <table class="signature-table">
+    <thead>
+      <tr><th>ΟΝΟΜΑΤΕΠΩΝΥΜΟ</th><th>ΙΔΙΟΤΗΤΑ</th><th>ΒΑΘΜΟΣ</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>{{supervisor_name}}</td><td>Επιβλέπων</td><td>{{grade1}}</td></tr>
+      <tr><td>{{member1_name}}</td><td>Μέλος</td><td>{{grade2}}</td></tr>
+      <tr><td>{{member2_name}}</td><td>Μέλος</td><td>{{grade3}}</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section" style="margin-top: 40px;">
+    <p>Μετά την έγκριση και την απονομή του βαθμού <strong>{{final_grade}}</strong>, η Τριμελής Επιτροπή προτείνει να προχωρήσει στην διαδικασία για να ανακηρύξει τον/την κ. <strong>{{student_name}}</strong>, σε διπλωματούχο του Προγράμματος Σπουδών του «ΤΜΗΜΑΤΟΣ ΜΗΧΑΝΙΚΩΝ, ΗΛΕΚΤΡΟΝΙΚΩΝ ΥΠΟΛΟΓΙΣΤΩΝ ΚΑΙ ΠΛΗΡΟΦΟΡΙΚΗΣ ΠΑΝΕΠΙΣΤΗΜΙΟΥ ΠΑΤΡΩΝ» και να του απονέμει το Δίπλωμα Μηχανικού Η/Υ το οποίο αναγνωρίζεται ως Ενιαίος Τίτλος Σπουδών Μεταπτυχιακού Επιπέδου.  </p>
+  </div>
+
+</body>
+</html>

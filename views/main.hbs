@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="/style.css">
+  {{{styles}}}
+</head>
+<body class="{{bodyClass}}">
+  <header>
+    <h1>Σύστημα Διαχείρισης Διπλωματικής Εργασίας</h1>
+  </header>
+
+  <nav>
+    <a href="/">Home</a>
+
+    {{#if user}}
+      <a href="/logout">Logout</a>
+    {{else}}
+      <a href="/login">Login</a>
+    {{/if}}
+
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </nav>
+
+  {{{body}}}
+
+  <footer>
+    <p>&copy; 2024 Diploma Management System. All rights reserved.</p>
+  </footer>
+</body>
+</html>

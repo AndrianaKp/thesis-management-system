@@ -1,0 +1,7 @@
+/* Μικρό align με το shared look */
+.page-prof .chart-container{
+  width: min(820px, 94vw); margin: 14px auto;
+  background:#fff; border:1px solid var(--line); border-radius:14px;
+  padding:16px; box-shadow: var(--shadow-sm);
+}
+.page-prof h1{ text-align:center; margin: 6px 0 10px; }

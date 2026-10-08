@@ -1,0 +1,45 @@
+/* =========================================================
+   ADMIN OVERRIDES
+   ========================================================= */
+
+.page-admin .dash-actions > *{ background:#0f172a; }
+.page-admin .dash-actions > *:hover{ background:#0b1222; }
+
+#gs-ap-form-section,
+#cancel-assignment-section,
+#json-import-section{
+  background:#fbfcff; border:1px solid var(--line);
+  border-radius:14px; padding:14px; box-shadow: var(--shadow-sm);
+  width: min(520px, 96vw);
+}
+#gs-ap-message, #cancel-assignment-message, #json-import-message{
+  margin-top:.6rem; border-radius:8px; padding:.55em .9em; font-weight:600;
+  background:#f6f8fd; border:1px solid #e7ecf6;
+}
+
+/* Δώσε στα 2 action buttons το ίδιο χρώμα με το Κλείσιμο */
+#admin-assignment-details-section #admin-details-actions .primary-btn,
+#admin-assignment-details-section #admin-details-actions .secondary-btn{
+  background: var(--brand-admin);   /* ίδιο με το “Κλείσιμο” στη σελίδα admin */
+  color:#fff;
+  border-color: transparent;
+}
+#admin-assignment-details-section #admin-details-actions .primary-btn:hover,
+#admin-assignment-details-section #admin-details-actions .secondary-btn:hover{
+  filter: brightness(1.02);
+}
+
+/* Κάνε List + JSON κάρτες να μοιράζονται την ίδια μέγιστη διάσταση */
+#admin-assignments-section,
+#json-import-section{
+  width: 100%;
+  max-width: min(1120px, 94vw);
+  margin: 18px auto;        /* ίδια στοίχιση */
+}
+
+/* Προαιρετικά, η γραμμή κάτω από τον τίτλο για ομοιομορφία */
+#json-import-section h2{
+  margin: 0 0 10px;
+  border-bottom: 2px solid #eef2f8;
+  padding-bottom: 6px;
+}

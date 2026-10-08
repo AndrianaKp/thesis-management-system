@@ -1,0 +1,56 @@
+<section class="hero">
+  <div class="container">
+    <h2 class="hero-title">Καλώς ήρθατε στο Σύστημα Διαχείρισης Διπλωματικών</h2>
+    <p class="hero-sub">Ανακοινώσεις παρουσιάσεων, διαχείριση θεμάτων και ρόλων – όλα σε ένα σημείο.</p>
+    <div class="cta-buttons">
+      <a class="btn" href="#announcements">Δημόσιες Ανακοινώσεις</a>
+      <a class="btn btn-ghost" href="/login">Σύνδεση</a>
+    </div>
+  </div>
+</section>
+
+<section class="home-section container">
+  <div class="features-grid">
+    <article class="feature-card">
+      <div class="feature-emoji">🎓</div>
+      <h3>Φοιτητές</h3>
+      <p>Προβολή θέματος, υποβολές, στοιχεία εξέτασης και προφίλ.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-emoji">👩‍🏫</div>
+      <h3>Διδάσκοντες</h3>
+      <p>Διαχείριση θεμάτων, επιτροπές, σημειώσεις και στατιστικά.</p>
+    </article>
+
+    <article class="feature-card">
+      <div class="feature-emoji">🏛️</div>
+      <h3>Γραμματεία</h3>
+      <p>Καταχώρηση ΑΠ/ΓΣ, ακυρώσεις/ολοκληρώσεις και έλεγχοι.</p>
+    </article>
+  </div>
+</section>
+
+<section id="announcements" class="home-section container">
+  <div class="section-head">
+    <h2>Ανακοινώσεις Παρουσιάσεων</h2>
+    <div class="ann-filters">
+      <label>Από:
+        <input type="date" id="ann-from">
+      </label>
+      <label>Έως:
+        <input type="date" id="ann-to">
+      </label>
+      <button id="ann-apply" class="btn btn-small">Εφαρμογή</button>
+      <a id="ann-json" class="btn btn-small btn-ghost" href="#">JSON</a>
+      <a id="ann-xml"  class="btn btn-small btn-ghost" href="#">XML</a>
+    </div>
+  </div>
+
+  <div id="ann-list" class="announcements-list">
+    <!-- Γεμίζει από /public/home.js -->
+  </div>
+</section>
+
+
+<script src="/home.js"></script>

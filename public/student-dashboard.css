@@ -1,0 +1,11 @@
+/* =========================================================
+   STUDENT OVERRIDES
+   ========================================================= */
+
+.page-student .dash-actions > *{ background:#111827; }
+.page-student .dash-actions > *:hover{ background:#0b1627; }
+
+#thesis-section .message { color: var(--info); }
+
+/* Modal εμφάνισης υποβολής */
+#submission-modal .modal-content{ width: min(640px, 92vw); }

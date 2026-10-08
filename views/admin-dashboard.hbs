@@ -1,0 +1,159 @@
+<main class="container page-admin">
+  <!-- ========== Dashboard Header (σταθερό σε όλα τα dashboards) ========== -->
+  <header class="dash-header">
+    <div>
+      <h1 class="dash-title">Πίνακας Γραμματείας</h1>
+      <p class="dash-subtitle">Λίστες, ΑΠ/ΓΣ, ακυρώσεις & ολοκληρώσεις</p>
+    </div>
+  </header>
+
+  <div class="dash-grid">
+    <!-- ========== Λίστα Διπλωματικών (Active & UnderReview) ========== -->
+    <section id="admin-assignments-section" class="card">
+      <h2>Λίστα Διπλωματικών (Ενεργές & Υπό Εξέταση)</h2>
+
+      <!-- Κουμπί εναλλαγής εμφάνισης πίνακα (το JS κάνει toggle) -->
+      <button id="toggle-list-btn" class="secondary-btn" style="margin:10px 0 6px;">
+        Εμφάνιση Λίστας
+      </button>
+
+      <!-- Wrapper που κρύβεται/εμφανίζεται. -->
+      <div id="list-wrapper" style="display:none;">
+        <div class="table-wrap" style="margin-top:10px;">
+          <table>
+            <thead>
+              <tr>
+                <th>Φοιτητής</th>
+                <th>Αριθμ. Μητρώου</th>
+                <th>Θέμα</th>
+                <th>Κατάσταση</th>
+                <th>Ενέργεια</th>
+              </tr>
+            </thead>
+            <!-- Το JS γεμίζει δυναμικά τα rows εδώ -->
+            <tbody id="assignments-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== Πάνελ Λεπτομερειών μίας ΔΕ ========== -->
+    <!-- Κρυφό αρχικά. Παραμένει με inline display:none για συμβατότητα με JS. -->
+    <section id="admin-assignment-details-section" class="card" style="display:none;">
+      <h2>Λεπτομέρειες Διπλωματικής</h2>
+
+      <!-- Βασικά πεδία (γεμίζουν από το JS) -->
+      <h3 id="details-topic-title"></h3>
+      <p><b>Φοιτητής:</b> <span id="details-student-name"></span> (<span id="details-student-number"></span>)</p>
+      <p><b>Περιγραφή:</b> <span id="details-topic-description"></span></p>
+      <p><b>Κατάσταση:</b> <span id="details-status"></span></p>
+      <p><b>Χρόνος από ανάθεση:</b> <span id="details-elapsed"></span></p>
+
+      <!-- Επιτροπή -->
+      <b>Επιτροπή:</b>
+      <ul id="details-committee-list"></ul>
+
+      <!-- Κουμπιά ενεργειών για κατάσταση Active (ανοίγουν/κλείνουν φόρμες) -->
+      <div id="admin-details-actions" class="dash-actions" style="display:none; margin-top:10px;">
+        <button id="btn-open-gsap" class="primary-btn">Καταχώρηση ΑΠ/ΓΣ</button>
+        <button id="btn-open-cancel" class="secondary-btn">Ακύρωση Ανάθεσης</button>
+      </div>
+
+      <!-- Κλείσιμο panel λεπτομερειών -->
+      <button id="close-details-btn" class="secondary-btn">Κλείσιμο</button>
+    </section>
+
+    <!-- ========== Φόρμα: Καταχώρηση ΑΠ/ΓΣ ========== -->
+    <!-- Κρυφή μέχρι να πατηθεί το «Καταχώρηση ΑΠ/ΓΣ». -->
+    <section id="gs-ap-form-section" class="card" style="display:none;">
+      <h3>Καταχώρηση ΑΠ/ΓΣ</h3>
+      <form id="gs-ap-form">
+        <label for="gs-arithmos">Αριθμός Πρακτικού:</label>
+        <input type="number" id="gs-arithmos" required>
+        <button type="submit" class="primary-btn">Καταχώρηση</button>
+        <div id="gs-ap-message" class="message"></div>
+      </form>
+    </section>
+
+    <!-- ========== Φόρμα: Ακύρωση Ανάθεσης ========== -->
+    <!-- Κρυφή μέχρι να πατηθεί το «Ακύρωση Ανάθεσης». -->
+    <section id="cancel-assignment-section" class="card" style="display:none;">
+      <h3>Ακύρωση Ανάθεσης Θέματος</h3>
+
+      <form id="cancel-assignment-form" class="cancel-form">
+        <!-- Δίστηλη γραμμή (Αριθμός ΓΣ / Έτος) -->
+        <div class="row-2">
+          <div class="field">
+            <label for="cancel-gs-arithmos">Αριθμός ΓΣ:</label>
+            <input type="number" id="cancel-gs-arithmos" required>
+          </div>
+          <div class="field">
+            <label for="cancel-gs-etos">Έτος:</label>
+            <input type="number" id="cancel-gs-etos" required>
+          </div>
+        </div>
+
+        <!-- Λόγος ακύρωσης -->
+        <div class="field">
+          <label for="cancel-reason">Λόγος ακύρωσης:</label>
+          <input type="text" id="cancel-reason" value="Κατόπιν αίτησης φοιτητή/τριας" required>
+        </div>
+
+        <!-- Υποβολή -->
+        <div class="actions">
+          <button type="submit" class="secondary-btn">Ακύρωση Ανάθεσης</button>
+        </div>
+      </form>
+
+      <!-- Μηνύματα επιτυχίας/σφάλματος -->
+      <div id="cancel-assignment-message" class="message"></div>
+    </section>
+
+    <!-- ========== Panel: Σήμανση ως Περατωμένη ========== -->
+    <!-- Προβάλλεται μόνο για UnderReview. -->
+    <section id="complete-assignment-section" class="card" style="display:none;">
+      <h3>Ολοκλήρωση ΔΕ (Περατωμένη)</h3>
+      <p id="completion-check-msg"></p>
+      <button id="complete-btn" type="button" class="primary-btn" disabled>Σήμανση ως Περατωμένη</button>
+      <div id="complete-result-message" class="message"></div>
+    </section>
+
+    <!-- ========== Εισαγωγή Δεδομένων από JSON ========== -->
+    <!-- Μικρή κάρτα με κουμπί που ανοίγει modal. -->
+    <section id="json-import-section" class="card">
+      <h2>Εισαγωγή Δεδομένων από JSON</h2>
+      <button id="open-json-modal" class="primary-btn">Άνοιγμα Φόρμας</button>
+    </section>
+
+    <!-- ========== Modal: Εισαγωγή από JSON ========== -->
+  
+    <div id="json-modal" class="modal" style="display:none;" role="dialog" aria-modal="true" aria-labelledby="json-modal-title">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="json-modal-title">Εισαγωγή Δεδομένων από JSON</h3>
+          <button type="button" class="modal-close" id="close-json-modal" aria-label="Κλείσιμο">×</button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Η φόρμα κάνει POST στο /api/secretariat/import-json μέσω fetch (JS) -->
+          <form id="json-import-form" enctype="multipart/form-data">
+            <input type="file" id="jsonFile" accept=".json" required>
+
+            <div class="modal-actions">
+              
+              <button type="submit" class="primary-btn" id="json-import-submit">Εισαγωγή</button>
+              <button type="button" class="btn btn-ghost" id="cancel-json-import">Άκυρο</button>
+            </div>
+          </form>
+
+          <!-- Εδώ γράφονται μηνύματα επιτυχίας/σφάλματος από το JS -->
+          <div id="json-import-message" class="message"></div>
+        </div>
+      </div>
+    </div>
+    <!-- ========== /Modal ========== -->
+  </div>
+
+
+  <script src="/admin-dashboard.js"></script>
+</main>
