@@ -72,6 +72,9 @@ This was built as a course prototype. If I took it to production I would:
 - add automated tests for the controllers
 - containerise the app and database with Docker Compose
 
-<!-- TODO (Andriana): replace this comment with a short "## My role" section,
-e.g. "I built the professor and secretariat back end (routes, controllers, SQL) and the statistics dashboard."
-Recruiters look for this in team projects. -->
+## My role
+
+We built the application together as a team of two. My focus was:
+- **Back end & database:** Express routes, controllers and the MySQL queries behind them, including the thesis status workflow and its history log
+- **Professor features:** topic creation and editing, assigning topics to students, committee invitations, notes, grading, the statistics dashboard and CSV/JSON export of the thesis list
+- **Student features (shared with my teammate):** parts of the student dashboard, such as committee invitations and thesis submission details
